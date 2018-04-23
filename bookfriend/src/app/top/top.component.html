@@ -1,0 +1,28 @@
+<div *ngIf="loginService.isShowTop" class="top-container">
+  <div class="top">
+    <img routerLink="" src="../../assets/logo.png" alt="">
+    <nz-input [nzType]="'search'" [nzPlaceHolder]="'搜索'" [(ngModel)]="searchContent" style="width: 200px;"></nz-input>
+    <div>
+      <span class="top-button-box">
+        <i class="anticon anticon-star-o" style="margin-right: 5px;"></i>关注
+      </span>
+      <span class="top-button-box">
+        <i class="anticon anticon-message" style="margin-right: 5px;"></i>消息
+      </span>
+    </div>
+    <div>
+      <nz-popover [nzTitle]="'hzh'">
+        <div routerLink="personal" class="head-avatar" nz-popover></div>
+        <ng-template #nzTemplate>
+          <div>
+            <p class="avatar-item"><i class="anticon anticon-file-text" style="margin-right: 15px;"></i>发表文章</p>
+            <p routerLink="personal" class="avatar-item"><i class="anticon anticon-user" style="margin-right: 15px;"></i>个人主页</p>
+            <p class="avatar-item"><i class="anticon anticon-setting" style="margin-right: 15px;"></i>设置</p>
+            <p class="avatar-item"><i class="anticon anticon-logout" style="margin-right: 15px;"></i>退出</p>
+          </div>
+        </ng-template>
+      </nz-popover>
+    </div>
+  </div>
+</div>
+<div *ngIf="loginService.isShowTop" class="block"></div>

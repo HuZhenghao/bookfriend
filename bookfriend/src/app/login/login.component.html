@@ -1,0 +1,23 @@
+<div class="main-container">
+  <div class="login-box">
+    <div class="select-box">
+      <div class="login-select {{isLogin?'cur':''}}" (click)="changeLogin(0)">登录</div>
+      <div class="login-select {{!isLogin?'cur':''}}" (click)="changeLogin(1)">注册</div>
+    </div>
+    <div class="login-container">
+      <form action="" #loginForm="ngForm">
+        <div class="login-line">
+          <span class="label">账号</span>
+          <input [(ngModel)]="name" name="name" type="text" required>
+        </div>
+        <div class="login-line">
+          <span class="label">密码</span>
+          <input [(ngModel)]="password" name="password" type="password" required>
+        </div>
+        <button class="login-button" nz-button [nzType]="'primary'" [nzLoading]="isLoadding">
+            <span>{{buttonText}}</span>
+          </button>
+      </form>
+    </div>
+  </div>
+</div>
