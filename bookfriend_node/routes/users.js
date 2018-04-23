@@ -30,7 +30,7 @@ router.post('/signup', function (req, res, next) {
       if (e.message.indexOf('duplicate key') !== -1) {
         res.json({
           data: [],
-          succsee: false,
+          success: false,
           message: "用户名重复"
         })
       } else {
@@ -45,11 +45,34 @@ router.post('/signup', function (req, res, next) {
 });
 //登录
 router.post('/signin', function (req, res, next) {
-  let user = {
+  let reqUser = {
     username: req.body.username,
     password: req.body.password
   }
-  // UsersModel
+  UsersModel.getUserByName(reqUser.username)
+    .then(function (user) {
+      if (!user) {
+        res.json({
+          data: [],
+          success: false,
+          message: "用户名不存在"
+        })
+      }
+      else if (user.password == reqUser.password) {
+        res.json({
+          data: [],
+          success: true,
+          message: "登陆成功"
+        })
+      } else {
+        res.json({
+          data: [],
+          success: false,
+          message: "密码错误"
+        })
+      }
+    })
+    .catch(next)
 })
 
 module.exports = router;

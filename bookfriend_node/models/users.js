@@ -9,7 +9,7 @@ module.exports = {
     //通过用户名获取用户信息
     getUserByName: function getUserByName(name) {
         return Users
-            .findOne({ name: name })
+            .findOne({ username: name })
             .exec()
     }
 }

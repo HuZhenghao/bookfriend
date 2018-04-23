@@ -1,0 +1,3 @@
+<div class="addpost-container" [@flyIn]="'active'">
+    <quill-editor [(ngModel)]="editorContent" (onContentChanged)="contentChange($event)"></quill-editor>
+</div>

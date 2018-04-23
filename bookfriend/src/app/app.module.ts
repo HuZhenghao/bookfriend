@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { QuillModule } from 'ngx-quill'
 
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
@@ -13,6 +14,7 @@ import { TopComponent } from './top/top.component';
 import { PersonalComponent } from './personal/personal.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
+import { AddpostComponent } from './addpost/addpost.component';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { LoginService } from './login.service';
     HomeComponent,
     TopComponent,
     PersonalComponent,
-    LoginComponent
+    LoginComponent,
+    AddpostComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import { LoginService } from './login.service';
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
     NgZorroAntdModule.forRoot(),
+    QuillModule,
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

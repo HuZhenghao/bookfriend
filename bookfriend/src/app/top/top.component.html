@@ -11,17 +11,24 @@
       </span>
     </div>
     <div>
-      <nz-popover [nzTitle]="'hzh'">
+      <nz-popover *ngIf="loginService.isLogin" [nzTitle]="username">
         <div routerLink="personal" class="head-avatar" nz-popover></div>
         <ng-template #nzTemplate>
           <div>
-            <p class="avatar-item"><i class="anticon anticon-file-text" style="margin-right: 15px;"></i>发表文章</p>
-            <p routerLink="personal" class="avatar-item"><i class="anticon anticon-user" style="margin-right: 15px;"></i>个人主页</p>
-            <p class="avatar-item"><i class="anticon anticon-setting" style="margin-right: 15px;"></i>设置</p>
-            <p class="avatar-item"><i class="anticon anticon-logout" style="margin-right: 15px;"></i>退出</p>
+            <p class="avatar-item" routerLink="addpost">
+              <i class="anticon anticon-file-text" style="margin-right: 15px;"></i>发表文章</p>
+            <p routerLink="personal" class="avatar-item">
+              <i class="anticon anticon-user" style="margin-right: 15px;"></i>个人主页</p>
+            <p class="avatar-item">
+              <i class="anticon anticon-setting" style="margin-right: 15px;"></i>设置</p>
+            <p class="avatar-item" (click)="logout()">
+              <i class="anticon anticon-logout" style="margin-right: 15px;"></i>退出</p>
           </div>
         </ng-template>
       </nz-popover>
+      <button *ngIf="!loginService.isLogin" (click)="toLogin()" nz-button [nzType]="'primary'">
+        <span>登录/注册</span>
+      </button>
     </div>
   </div>
 </div>
