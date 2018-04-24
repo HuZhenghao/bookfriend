@@ -10,6 +10,8 @@ import { flyIn } from '../animation/fly-in';
 export class AddpostComponent implements OnInit {
   editorContent = "";
   editor;
+  title;
+  book;
   constructor() { }
 
   ngOnInit() {

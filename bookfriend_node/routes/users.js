@@ -74,5 +74,10 @@ router.post('/signin', function (req, res, next) {
     })
     .catch(next)
 })
+router.post('/test',function(req, res, next){
+  res.json({
+    data: "test"
+  })
+})
 
 module.exports = router;

@@ -11,5 +11,13 @@ module.exports = {
         return Users
             .findOne({ username: name })
             .exec()
+    },
+    //给用户添加一条消息
+    addMessage: function addMessage(name, postId) {
+        let message = Users.findOne({ username: name }).message;
+        message.push(postId);
+        return Users
+            .updateOne({ username: name }, { message: message })
+            .exec();
     }
 }

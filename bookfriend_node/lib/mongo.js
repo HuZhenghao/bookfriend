@@ -29,7 +29,7 @@ let postSchema = new Schema({
     authorname: { type: String },
     content: { type: String },
     title: { type: String },
-    pv: { type: String },
+    pv: { type: Number, default: 0 },
     bookname: { type: String }
 }, { timestamps: true })
 exports.Post = Mongoose.model('post', postSchema);

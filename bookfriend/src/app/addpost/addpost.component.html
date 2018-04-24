@@ -1,3 +1,18 @@
 <div class="addpost-container" [@flyIn]="'active'">
-    <quill-editor [(ngModel)]="editorContent" (onContentChanged)="contentChange($event)"></quill-editor>
+  <h1 class="top">发表文章</h1>
+  <div class="item-container" style="width: 500px;">
+    <div class="item-text">文章标题：</div>
+    <nz-input class="item-input" [(ngModel)]="title" [nzSize]="'large'"></nz-input>
+  </div>
+  <div class="item-container" style="width: 500px;">
+    <div class="item-text">书籍标签：</div>
+    <nz-input class="item-input" [(ngModel)]="book" [nzSize]="'large'"></nz-input>
+  </div>
+  <div class="item-text">文章内容：</div>
+  <quill-editor [(ngModel)]="editorContent" (onContentChanged)="contentChange($event)"></quill-editor>
+  <div class="button-container">
+    <button class="submit-button" (click)="submit()" nz-button [nzType]="'primary'" [nzSize]="'large'">
+      <span>发布</span>
+    </button>
+  </div>
 </div>

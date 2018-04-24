@@ -2,5 +2,29 @@
     width: 1200px;
     margin: 0 auto;
 }
-
-
+.top{
+    padding: 30px 0;
+}
+.item-container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.item-text{
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+}
+.item-input{
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 30px 0;
+}
