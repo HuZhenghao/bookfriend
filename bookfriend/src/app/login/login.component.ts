@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           data => {
             this.isLoadding = false;
             if (data.json().success) {
-              localStorage.setItem("user",this.name);
+              localStorage.setItem("user",JSON.stringify(data.json().data));
               window.history.back();
               this.loginService.isLogin = true;
             }
@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           data => {
             this.isLoadding = false;
             if (data.json().success) {
-              localStorage.setItem("user",this.name);
+              localStorage.setItem("user",JSON.stringify(data.json().data));
               window.history.back();
               this.loginService.isLogin = true;
             }

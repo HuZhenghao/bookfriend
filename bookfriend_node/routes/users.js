@@ -14,7 +14,7 @@ router.post('/signup', function (req, res, next) {
     .then(function (result) {
       if (user.username && user.password) {
         res.json({
-          data: [],
+          data: result,
           success: true,
           message: "注册成功"
         })
@@ -60,7 +60,7 @@ router.post('/signin', function (req, res, next) {
       }
       else if (user.password == reqUser.password) {
         res.json({
-          data: [],
+          data: user,
           success: true,
           message: "登陆成功"
         })
@@ -73,11 +73,6 @@ router.post('/signin', function (req, res, next) {
       }
     })
     .catch(next)
-})
-router.post('/test',function(req, res, next){
-  res.json({
-    data: "test"
-  })
 })
 
 module.exports = router;

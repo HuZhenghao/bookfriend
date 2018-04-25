@@ -14,6 +14,7 @@ export class TopComponent implements OnInit {
   searchContent;
   isLogin;
   username;
+  user;
   constructor(
     public loginService: LoginService,
     private http: Http,
@@ -21,7 +22,8 @@ export class TopComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    let username = localStorage.getItem("user");
+    this.user = JSON.parse(localStorage.getItem("user"));
+    let username = JSON.parse(localStorage.getItem("user")).username;
     if(username){
       this.loginService.isLogin = true;
       this.username = username;

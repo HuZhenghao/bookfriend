@@ -12,7 +12,9 @@
     </div>
     <div>
       <nz-popover *ngIf="loginService.isLogin" [nzTitle]="username">
-        <div routerLink="personal" class="head-avatar" nz-popover></div>
+        <div routerLink="personal" class="head-avatar" nz-popover>
+          <img src="http://localhost:3000{{user.avatar}}" alt="">
+        </div>
         <ng-template #nzTemplate>
           <div>
             <p class="avatar-item" routerLink="addpost">

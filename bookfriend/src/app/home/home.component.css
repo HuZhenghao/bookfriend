@@ -1,0 +1,47 @@
+.home-container{
+    width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+}
+.avatar-container{
+    display: flex;
+    justify-content: center;
+}
+.avatar{
+    width: 64px;
+    height: 64px;
+}
+.post-item{
+    margin-bottom: 30px;
+}
+.content-box{
+    position: relative;
+    width: 800px;
+    max-height: 600px;
+    padding-top: 30px;
+}
+.content-container{
+    width: 800px;
+    max-height: 600px;
+    padding: 20px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: -5px 6px 2px -2px #eee; 
+}
+.content-box::before{
+    position: absolute;
+    top: 10px;
+    left: -20px;
+    content: "";
+    height: 0;
+    width: 0;
+    border-bottom: 20px solid #fff;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid transparent;
+    box-shadow: 0px 5px 2px -2px #eee;
+    transform: rotate(45deg);
+}
+:host ::ng-deep .ant-card-body {
+    padding: 18px 18px 5px 18px;
+  }

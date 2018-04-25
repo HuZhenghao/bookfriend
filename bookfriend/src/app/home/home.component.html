@@ -1,3 +1,22 @@
-<p [@flyIn]="'active'">
-  home works!
-</p>
+<div class="home-container" [@flyIn]="'active'">
+  <div class="post-item" *ngFor="let post of posts; let i = index" nz-row>
+    <div class="avatar-container" nz-col [nzSpan]="4">
+
+      <nz-card style="width:100px">
+        <ng-template #body>
+          <div class="custom-image">
+            <img class="avatar" src="http://localhost:3000{{post.author.avatar}}" alt="">
+          </div>
+          <div class="custom-card">
+            <h3 style="text-align: center;">{{post.author.username}}</h3>
+          </div>
+        </ng-template>
+      </nz-card>
+    </div>
+    <div class="content-box" nz-col [nzSpan]="20">
+      <div class="content-container">
+        {{post.content}}
+      </div>
+    </div>
+  </div>
+</div>

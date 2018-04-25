@@ -14,7 +14,7 @@ let usersSchema = new Schema({
     password: { type: String },
     nickname: { type: String },
     gender: { type: String },
-    avatar: { type: String, default: '/upload/defaultAvatar.png' },
+    avatar: { type: String, default: '/img/defaultAvatar.png' },
     like: { type: Array },
     message: { type: Array }
 }, { timestamps: true })
@@ -26,11 +26,12 @@ let bookSchema = new Schema({
 exports.Book = Mongoose.model('book', bookSchema);
 
 let postSchema = new Schema({
-    authorname: { type: String },
+    author: { type: Mongoose.Schema.Types.ObjectId, ref: 'user' },
     content: { type: String },
     title: { type: String },
     pv: { type: Number, default: 0 },
-    bookname: { type: String }
+    bookname: { type: String },
+    img: { type: String }
 }, { timestamps: true })
 exports.Post = Mongoose.model('post', postSchema);
 

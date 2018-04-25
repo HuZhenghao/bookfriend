@@ -1,24 +1,41 @@
 const express = require('express');
 const router = express.Router();
 const PostModel = require('../models/post');
+let path = require('path');
 
-// router.post('/create', function(req, res, next){
-//     let post = {
-//         authorname: req.fields.authorname,
-//         content: req.fields.content,
-//         title: req.fields.title,
-//         bookname: req.fields.bookname
-//     }
-//     console.log(post);
-//     res.json({
-//         data: []
-//     })
-// })
-router.post('/create',function(req, res, next){
-    console.log(req.body);
-    res.json({
-      data: "test"
-    })
-  })
+//创建文章
+router.post('/create', require('express-formidable')({
+    uploadDir: path.join(__dirname, 'upload'), // 上传文件目录
+    keepExtensions: true// 保留后缀
+}), function (req, res, next) {
+    let post = {
+        author: req.fields.author,
+        content: req.fields.content,
+        title: req.fields.title,
+        bookname: req.fields.bookname,
+        img: req.fields.img
+    }
+    PostModel.create(post)
+        .then(function (result) {
+            res.json({
+                data: { id: result._id },
+                success: true,
+                message: '创建成功'
+            })
+        })
+        .catch(next);
+})
+//查询所有文章
+router.get('/getAll', function (req, res, next) {
+    PostModel.getAll()
+        .then(function (result) {
+            res.json({
+                data: result,
+                success: true,
+                message: '查询成功'
+            })
+        })
+        .catch(next);
+})
 
 module.exports = router;
