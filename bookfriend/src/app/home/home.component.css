@@ -22,9 +22,10 @@
 }
 .content-container{
     width: 800px;
-    max-height: 600px;
+    max-height: 500px;
     padding: 20px;
-    overflow: hidden;
+    overflow-y: hidden;
+    word-wrap: break-word;
     background-color: #fff;
     box-shadow: -5px 6px 2px -2px #eee; 
 }
