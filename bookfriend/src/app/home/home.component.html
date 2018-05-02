@@ -14,8 +14,7 @@
       </nz-card>
     </div>
     <div class="content-box" nz-col [nzSpan]="20">
-      <div class="content-container">
-        {{post.content}}
+      <div class="content-container" [innerHTML]="post.content">
       </div>
     </div>
   </div>
