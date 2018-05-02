@@ -11,7 +11,7 @@
       </span>
     </div>
     <div>
-      <nz-popover *ngIf="loginService.isLogin" [nzTitle]="username">
+      <nz-popover *ngIf="loginService.isLogin" [nzTitle]="loginService.username">
         <div routerLink="personal" class="head-avatar" nz-popover>
           <img src="http://localhost:3000{{user.avatar}}" alt="">
         </div>

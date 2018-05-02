@@ -47,6 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               localStorage.setItem("user",JSON.stringify(data.json().data));
               window.history.back();
               this.loginService.isLogin = true;
+              this.loginService.username = JSON.parse(localStorage.getItem("user")).username;
             }
             else {
               this._message.create('error', data.json().message, { nzDuration: 3000 });
@@ -67,6 +68,7 @@ export class LoginComponent implements OnInit, OnDestroy {
               localStorage.setItem("user",JSON.stringify(data.json().data));
               window.history.back();
               this.loginService.isLogin = true;
+              this.loginService.username = JSON.parse(localStorage.getItem("user")).username;
             }
             else {
               this._message.create('error', data.json().message, { nzDuration: 3000 });

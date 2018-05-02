@@ -4,5 +4,6 @@ import { Injectable } from '@angular/core';
 export class LoginService {
   public isShowTop = true;
   public isLogin = false;
+  public username = "";
   constructor() {}
 }
