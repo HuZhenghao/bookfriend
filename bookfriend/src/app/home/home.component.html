@@ -12,10 +12,15 @@
           </div>
         </ng-template>
       </nz-card>
+      
     </div>
     <div class="content-box" nz-col [nzSpan]="20">
       <div class="content-container">
+        <div class="content-title">{{post.title}}</div>
         <div class="content" [innerHTML]="post.content"></div>
+        <div class="content-bottom">
+          浏览({{post.pv}})
+        </div>
       </div>
     </div>
   </div>

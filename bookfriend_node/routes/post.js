@@ -37,5 +37,16 @@ router.get('/getAll', function (req, res, next) {
         })
         .catch(next);
 })
+//查询某人文章
+router.get('/getPeople', function (req, res, next) {
+    PostModel.getPeople(req.query.id)
+    .then(function (result) {
+        res.json({
+            data: result,
+            success: true,
+            message: '查询成功'
+        })
+    })
+})
 
 module.exports = router;
