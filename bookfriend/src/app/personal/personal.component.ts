@@ -8,10 +8,11 @@ import { flyIn } from '../animation/fly-in';
   animations: [flyIn]
 })
 export class PersonalComponent implements OnInit {
-
+  user;
   constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem("user"));
   }
 
 }

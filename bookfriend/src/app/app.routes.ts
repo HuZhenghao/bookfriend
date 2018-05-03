@@ -8,7 +8,7 @@ import { AddpostComponent } from './addpost/addpost.component';
 
 export const appRoutes = [
     { path: '', component: HomeComponent},
-    { path: 'personal', component: PersonalComponent},
     { path: 'login', component: LoginComponent},
-    { path: 'addpost', component: AddpostComponent}
+    { path: 'addpost', component: AddpostComponent},
+    { path: 'personal', loadChildren: './personal/personal.module#PersonalModule'},
 ]

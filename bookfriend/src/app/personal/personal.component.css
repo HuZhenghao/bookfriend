@@ -3,3 +3,23 @@
     margin: 0 auto;
     padding: 30px 0;
 }
+.personal-top{
+    display: flex;
+    width: 800px;
+    height: 120px;
+    margin: 0 auto;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 5px 2px -2px #eee;
+}
+.headimg{
+    width: 80px;
+    height: 80px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+.personal-name{
+    font-size: 21px;
+    color: #2f2f2f;
+    font-weight: 700;
+}

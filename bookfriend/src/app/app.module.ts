@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { HomeComponent } from './home/home.component';
 import { TopComponent } from './top/top.component';
-import { PersonalComponent } from './personal/personal.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
 import { AddpostComponent } from './addpost/addpost.component';
@@ -22,7 +21,6 @@ import { AddpostComponent } from './addpost/addpost.component';
     AppComponent,
     HomeComponent,
     TopComponent,
-    PersonalComponent,
     LoginComponent,
     AddpostComponent
   ],

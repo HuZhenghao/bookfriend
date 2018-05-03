@@ -1,3 +1,16 @@
 <div class="main-container" [@flyIn]="'active'">
-  123
+  <div class="personal-top">
+    <img class="headimg" src="http://localhost:3000{{user.avatar}}" />
+    <div class="personal-info">
+      <div class="personal-name">
+        {{user.username}}
+      </div>
+      <ul nz-menu [nzMode]="'horizontal'">
+          <li nz-menu-item><i class="anticon anticon-star-o"></i>关注</li>
+          <li nz-menu-item nzDisabled><i class="anticon anticon-appstore"></i> Navigation Two</li>
+          <li nz-menu-item><a href="https://ng.ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a></li>
+        </ul>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
 </div>
