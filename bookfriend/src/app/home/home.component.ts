@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     .subscribe(
       data => {
         this.posts = data.json().data;
+        console.log(this.posts[0].createdAt)
       },
       error => {
         console.error(error);

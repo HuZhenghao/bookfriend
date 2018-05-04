@@ -1,4 +1,5 @@
 const Users = require('../lib/mongo').Users;
+const Mongoose = require('mongoose');
 
 module.exports = {
     //注册
@@ -19,5 +20,12 @@ module.exports = {
         return Users
             .updateOne({ username: name }, { message: message })
             .exec();
-    }
+    },
+    //查询关注
+    getLike: function getLike(id) {
+        return Users
+            .findById(Mongoose.Types.ObjectId(id))
+
+    },
+
 }

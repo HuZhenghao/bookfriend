@@ -51,6 +51,8 @@ router.post('/signin', function (req, res, next) {
   }
   UsersModel.getUserByName(reqUser.username)
     .then(function (user) {
+      console.log(user);
+      console.log(reqUser.password);
       if (!user) {
         res.json({
           data: [],
@@ -74,6 +76,27 @@ router.post('/signin', function (req, res, next) {
     })
     .catch(next)
 })
-//router
+//根据用户名查询
+router.get('/getUserByName', function (req, res, next) {
+  UsersModel.getUserByName(req.query.name)
+    .then(function (result) {
+      res.json({
+        data: result,
+        success: true,
+        message: "查询成功"
+      })
+    })
+})
+//查询关注
+router.get('/getLike', function (req, res, next) {
+  UsersModel.getLike(req.query.id)
+    .then(function (result) {
+      res.json({
+        data: result,
+        success: true,
+        message: "查询成功"
+      })
+    })
+})
 
 module.exports = router;

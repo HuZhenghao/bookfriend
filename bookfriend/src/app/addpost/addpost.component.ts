@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { flyIn } from '../animation/fly-in';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-addpost',
@@ -17,7 +18,8 @@ export class AddpostComponent implements OnInit {
   book = "";
   constructor(
     private _message: NzMessageService,
-    public http: Http
+    public http: Http,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -26,7 +28,6 @@ export class AddpostComponent implements OnInit {
   //输入
   contentChange(e) {
     this.editor = e;
-    console.log(e);
   }
   submit() {
     if (this.title == "") {
@@ -56,7 +57,8 @@ export class AddpostComponent implements OnInit {
     this.http.post('http://localhost:3000/post/create', data)
     .subscribe(
       data => {
-        console.log(data.json().data)
+        console.log(data.json().data);
+        this.router.navigateByUrl('');
       },
       error => {
         console.error(error)

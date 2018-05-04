@@ -3,14 +3,19 @@
     <img class="headimg" src="http://localhost:3000{{user.avatar}}" />
     <div class="personal-info">
       <div class="personal-name">
-        {{user.username}}
+        {{name}}
       </div>
       <ul nz-menu [nzMode]="'horizontal'">
-          <li nz-menu-item><i class="anticon anticon-star-o"></i>关注</li>
-          <li nz-menu-item nzDisabled><i class="anticon anticon-appstore"></i> Navigation Two</li>
-          <li nz-menu-item><a href="https://ng.ant.design" target="_blank" rel="noopener noreferrer">Navigation Four - Link</a></li>
+          <li routerLink="like" routerLinkActive="ant-menu-item-selected" nz-menu-item><i class="anticon anticon-star-o"></i>关注</li>
+          <li routerLink="personal-post" routerLinkActive="ant-menu-item-selected" nz-menu-item><i class="anticon anticon-file-text"></i> 文章</li>
+          <li routerLink="message" routerLinkActive="ant-menu-item-selected" nz-menu-item><i class="anticon anticon-message"></i>消息</li>
+          <li routerLink="setting" routerLinkActive="ant-menu-item-selected" nz-menu-item><i class="anticon anticon-setting"></i>设置</li>
         </ul>
     </div>
+    <div *ngIf="myself.username !== user.username && !isLike" class="like" (click)="like()">关注</div>
+    <div *ngIf="myself.username !== user.username && isLike" class="like" (click)="like()">取消关注</div>
   </div>
-  <router-outlet></router-outlet>
+  <div class="router-container">
+    <router-outlet></router-outlet>
+  </div>
 </div>

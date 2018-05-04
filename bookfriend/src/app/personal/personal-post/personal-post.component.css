@@ -1,15 +1,5 @@
-.home-container{
-    width: 1200px;
-    margin: 0 auto;
-    padding: 30px 0;
-}
-.avatar-container{
-    display: flex;
-    justify-content: center;
-}
-.avatar{
-    width: 64px;
-    height: 64px;
+.main-container{
+    margin-top: 30px;
 }
 .post-item{
     margin-bottom: 30px;
@@ -31,20 +21,6 @@
     background-color: #fff;
     box-shadow: -7px 7px 2px -2px #eee; 
 }
-.content-box::before{
-    position: absolute;
-    top: 10px;
-    left: -20px;
-    content: "";
-    height: 0;
-    width: 0;
-    border-bottom: 20px solid #fff;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid transparent;
-    box-shadow: 0px 7px 2px -2px #eee;
-    transform: rotate(45deg);
-}
 :host ::ng-deep .ant-card-body {
     padding: 18px 18px 5px 18px;
   }
@@ -63,7 +39,7 @@
     transition: all .5s;
 }
 .content-title:hover{
-    text-shadow: 2px 2px 2px #ddd;
+    text-shadow: 2px 2px 1px #ddd;
     font-size: 22px;
 }
 .content-bottom{
@@ -71,10 +47,4 @@
     height: 50px;
     display: flex;
     align-items: center;
-}
-.avatar-item{
-    cursor: pointer;
-}
-.avatar-item:hover{
-    font-weight: 600;
 }

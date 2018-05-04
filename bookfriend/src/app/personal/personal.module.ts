@@ -7,6 +7,10 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 import { PersonalComponent } from './personal.component';
 import { personalRoutes } from './personal.routes';
+import { LikeComponent } from './like/like.component';
+import { MessageComponent } from './message/message.component';
+import { PersonalPostComponent } from './personal-post/personal-post.component';
+import { SettingComponent } from './setting/setting.component';
 
 @NgModule({
   imports: [
@@ -15,7 +19,11 @@ import { personalRoutes } from './personal.routes';
     RouterModule.forChild(personalRoutes),
   ],
   declarations: [
-    PersonalComponent
+    PersonalComponent,
+    LikeComponent,
+    MessageComponent,
+    PersonalPostComponent,
+    SettingComponent
   ]
 })
 export class PersonalModule { }

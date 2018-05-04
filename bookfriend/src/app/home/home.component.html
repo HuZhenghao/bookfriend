@@ -2,7 +2,7 @@
   <div class="post-item" *ngFor="let post of posts; let i = index" nz-row>
     <div class="avatar-container" nz-col [nzSpan]="4">
 
-      <nz-card style="width:100px;cursor: pointer;">
+      <nz-card style="width:100px;cursor: pointer;" routerLink="personal/{{post.author.username}}">
         <ng-template #body>
           <div class="custom-image">
             <img class="avatar" src="http://localhost:3000{{post.author.avatar}}" alt="">

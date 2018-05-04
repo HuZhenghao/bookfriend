@@ -10,5 +10,5 @@ export const appRoutes = [
     { path: '', component: HomeComponent},
     { path: 'login', component: LoginComponent},
     { path: 'addpost', component: AddpostComponent},
-    { path: 'personal', loadChildren: './personal/personal.module#PersonalModule'},
+    { path: 'personal/:name', loadChildren: './personal/personal.module#PersonalModule'},
 ]
