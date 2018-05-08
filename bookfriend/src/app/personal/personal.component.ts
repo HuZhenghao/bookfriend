@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { flyIn } from '../animation/fly-in';
 import { Http } from '@angular/http';
 
@@ -26,6 +26,7 @@ export class PersonalComponent implements OnInit {
   isLike = false;
   constructor(
     public router: ActivatedRoute,
+    public route: Router,
     public http: Http
   ) { }
 

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { flyIn } from '../../animation/fly-in';
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'app-personal-post',
@@ -12,25 +13,31 @@ export class PersonalPostComponent implements OnInit {
   user;
   posts = [];
   constructor(
-    public http: Http
+    public http: Http,
+    public route: ActivatedRoute
   ) { }
 
   ngOnInit() {
     let that = this;
-    setTimeout(function () {
-      that.user = JSON.parse(localStorage.getItem('nowPerson'));
-      console.log(that.user.username);
-      that.http.get(`http://localhost:3000/post/getPeople?id=${that.user._id}`)
-        .subscribe(
-          data => {
-            that.posts = data.json().data;
-          },
-          error => {
-            console.error(error)
-          }
-        )
-    }, 100)
+    this.route.url.subscribe(
+      e => {
+        setTimeout(function () {
+          that.user = JSON.parse(localStorage.getItem('nowPerson'));
+          that.http.get(`http://localhost:3000/post/getPeople?id=${that.user._id}`)
+            .subscribe(
+              data => {
+                that.posts = data.json().data;
+              },
+              error => {
+                console.error(error)
+              }
+            )
+        }, 100)
+      }
+    )
 
+  }
+  ngAfterViewInit() {
   }
 
 }
