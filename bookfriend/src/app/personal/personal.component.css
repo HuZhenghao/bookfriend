@@ -8,9 +8,10 @@
     width: 800px;
     height: 120px;
     margin: 0 auto;
+    border-radius: 10px;
     align-items: center;
     background-color: #fff;
-    box-shadow: -6px 6px 3px -1px #eee;
+    box-shadow: -6px 6px 3px -1px rgba(200, 200, 200, 0.5);
 }
 .headimg{
     width: 80px;
@@ -42,4 +43,8 @@
 }
 .like:hover {
     background-color: #3db922;
+}
+.info{
+    width: 300px;
+    margin-top: 20px;
 }

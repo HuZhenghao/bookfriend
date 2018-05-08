@@ -1,9 +1,11 @@
 .addpost-container{
+    box-sizing: border-box;
     width: 1200px;
     margin: 0 auto;
-}
-.top{
-    padding: 30px 0;
+    margin-top: 50px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 15px;
 }
 .item-container{
     display: flex;
@@ -26,5 +28,5 @@
     display: flex;
     justify-content: center;
     width: 100%;
-    margin: 30px 0;
+    margin-top: 30px;
 }

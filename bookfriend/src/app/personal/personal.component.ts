@@ -41,14 +41,16 @@ export class PersonalComponent implements OnInit {
               this.user = data.json().data;
               localStorage.removeItem('nowPerson');
               localStorage.setItem('nowPerson', JSON.stringify(this.user));
-              for (let i = 0; i < this.myself.like.length; i ++) {
-                if(this.myself.like[i].id) {
-                  if(this.myself.like[i].id == this.user._id){
+              for (let i = 0; i < this.myself.like.length; i++) {
+                console.log(this.myself.like[i].id);
+                console.log(this.user._id);
+                if (this.myself.like[i].id) {
+                  if (this.myself.like[i].id == this.user._id) {
                     this.isLike = true;
                   }
                 }
               }
-          },
+            },
             e => {
               console.error(e)
             }
@@ -58,7 +60,40 @@ export class PersonalComponent implements OnInit {
   }
   //关注
   like() {
-
+    this.http.get(`http://localhost:3000/users/like?id=${this.user._id}&myid=${this.myself._id}`)
+      .subscribe(
+        data => {
+          this.myself.like.push(this.user._id);
+          localStorage.setItem('user', JSON.stringify(this.myself));
+          this.isLike = true;
+        },
+        error => {
+          console.error(error)
+        }
+      )
   }
+  //取消关注
+  dislike() {
+    this.http.get(`http://localhost:3000/users/dislike?id=${this.user._id}&myid=${this.myself._id}`)
+      .subscribe(
+        data => {
+          let length = this.myself.like.length;
+          for (let i = 0; i < length; i++) {
+            if (this.myself.like[i].id = this.user._id) {
+              this.myself.like.splice(i, 1);
+              i--;
+              length--;
+            }
+          }
+          console.log(this.myself);
+          localStorage.setItem('user', JSON.stringify(this.myself));
+          this.isLike = false;
+        },
+        error => {
+          console.error(error)
+        }
+      )
+  }
+
 
 }

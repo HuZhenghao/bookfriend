@@ -5,15 +5,20 @@
       <div class="personal-name">
         {{name}}
       </div>
-      <ul nz-menu [nzMode]="'horizontal'">
-          <li routerLink="like" routerLinkActive="ant-menu-item-selected" nz-menu-item><i class="anticon anticon-star-o"></i>关注</li>
-          <li routerLink="personal-post" routerLinkActive="ant-menu-item-selected" nz-menu-item><i class="anticon anticon-file-text"></i> 文章</li>
-          <li routerLink="message" routerLinkActive="ant-menu-item-selected" nz-menu-item><i class="anticon anticon-message"></i>消息</li>
-          <li routerLink="setting" routerLinkActive="ant-menu-item-selected" nz-menu-item><i class="anticon anticon-setting"></i>设置</li>
-        </ul>
+      <ul *ngIf="myself.username == user.username" nz-menu [nzMode]="'horizontal'">
+        <li routerLink="like" routerLinkActive="ant-menu-item-selected" nz-menu-item>
+          <i class="anticon anticon-star-o"></i>关注</li>
+        <li routerLink="personal-post" routerLinkActive="ant-menu-item-selected" nz-menu-item>
+          <i class="anticon anticon-file-text"></i> 文章</li>
+        <li routerLink="message" routerLinkActive="ant-menu-item-selected" nz-menu-item>
+          <i class="anticon anticon-message"></i>消息</li>
+        <li routerLink="setting" routerLinkActive="ant-menu-item-selected" nz-menu-item>
+          <i class="anticon anticon-setting"></i>设置</li>
+      </ul>
+      <div *ngIf="myself.username !== user.username" class="info">{{user.info}}</div>
     </div>
     <div *ngIf="myself.username !== user.username && !isLike" class="like" (click)="like()">关注</div>
-    <div *ngIf="myself.username !== user.username && isLike" class="like" (click)="like()">取消关注</div>
+    <div *ngIf="myself.username !== user.username && isLike" class="like" (click)="dislike()">取消关注</div>
   </div>
   <div class="router-container">
     <router-outlet></router-outlet>

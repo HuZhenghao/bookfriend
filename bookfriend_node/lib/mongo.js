@@ -13,10 +13,11 @@ let usersSchema = new Schema({
     username: { type: String, index: true, unique: true },
     password: { type: String },
     nickname: { type: String },
+    info: { type: String, default: '这家伙很懒，还没有个人介绍！'},
     gender: { type: String },
     avatar: { type: String, default: '/img/defaultAvatar.png' },
-    like: { type: Array },
-    message: { type: Array }
+    like: [{ id: {type: Mongoose.Schema.Types.ObjectId, ref: 'user'} }],
+    message: [{ id: {type: Mongoose.Schema.Types.ObjectId, ref: 'post'}}]
 }, { timestamps: true })
 exports.Users = Mongoose.model('user', usersSchema);
 

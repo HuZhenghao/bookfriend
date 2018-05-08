@@ -99,4 +99,27 @@ router.get('/getLike', function (req, res, next) {
     })
 })
 
+//关注
+router.get('/like', function (req, res, next) {
+  UsersModel.like(req.query.id, req.query.myid)
+    .then(function (result) {
+      res.json({
+        data: result,
+        success: true,
+        message: "关注成功"
+      })
+    })
+})
+//取消关注
+router.get('/dislike', function (req, res, next) {
+  UsersModel.dislike(req.query.id, req.query.myid)
+    .then(function (result) {
+      res.json({
+        data: result,
+        success: true,
+        message: "取消关注成功"
+      })
+    })
+})
+
 module.exports = router;

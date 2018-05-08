@@ -23,6 +23,7 @@ export class TopComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("user"));
+    console.log(this.user)
     if(this.user){
       this.loginService.isLogin = true;
     }else{

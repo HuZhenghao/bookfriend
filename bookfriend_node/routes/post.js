@@ -17,6 +17,7 @@ router.post('/create', require('express-formidable')({
     }
     PostModel.create(post)
         .then(function (result) {
+            console.log(123);
             res.json({
                 data: { id: result._id },
                 success: true,

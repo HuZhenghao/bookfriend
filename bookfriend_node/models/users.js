@@ -23,32 +23,38 @@ module.exports = {
     },
     //查询关注
     getLike: function getLike(id) {
-        return Users
-            .findById(Mongoose.Types.ObjectId(id))
+        return Users.findOne({ _id: id })
+            .populate('like.id')
 
     },
     //关注
     like: function like(id, myid) {
-        let likes = Users.findById(Mongoose.Types.ObjectId(myid)).like;
-        likes.push({ id: id })
-        return Users
-            .update({ _id: Mongoose.Types.ObjectId(myid) }, { like: likes })
-            .exec();
+        return Users.findOne({ _id: myid })
+            .then((res) => {
+                let likes = res.like;
+                likes.push({ id: id })
+                return Users
+                    .update({ _id: Mongoose.Types.ObjectId(myid) }, { like: likes })
+            })
+
     },
     //取消关注
     dislike: function dislike(id, myid) {
-        let likes = Users.findById(Mongoose.Types.ObjectId(myid)).like;
-        let length = likes.length;
-        for (let i = 0; i < length; i++) {
-            if (likes[i].id = id) {
-                likes.slice(i, 1);
-                i--;
-                length--;
-            }
-        }
-        return Users
-            .update({ _id: Mongoose.Types.ObjectId(myid) }, { like: likes })
-            .exec();
+        return Users.findOne({ _id: myid })
+            .then((res) => {
+                let likes = res.like;
+                let length = likes.length;
+                for (let i = 0; i < length; i++) {
+                    if (likes[i].id = id) {
+                        likes.splice(i, 1);
+                        i--;
+                        length--;
+                    }
+                }
+                return Users
+                    .update({ _id: Mongoose.Types.ObjectId(myid) }, { like: likes })
+                    .exec();
+            })
     }
 
 

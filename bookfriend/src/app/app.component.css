@@ -2,8 +2,20 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: -2;
+    width: 100vw;
+    height: 100vh;
+    /* background-color: #f3fff3; */
+    background-image: url(../assets/bg.jpg);
+    background-attachment: fixed;
+    background-size: 100% 100%; 
+}
+.mask{
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: -1;
     width: 100vw;
     height: 100vh;
-    background-color: #f3fff3;
+    background-color: rgba(0,0,0,0.5);
 }
