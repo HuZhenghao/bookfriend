@@ -1,5 +1,5 @@
 <div class="main-container" [@flyIn]="'active'">
-  <p>
-    like works!
-  </p>
+  <div class="like-container">
+    <div *ngFor="let like of list;let i = index;" class="like-item"></div>
+  </div>
 </div>

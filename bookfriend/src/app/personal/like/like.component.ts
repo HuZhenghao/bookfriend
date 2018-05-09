@@ -22,7 +22,7 @@ export class LikeComponent implements OnInit {
     this.http.get(`http://localhost:3000/users/getLike?id=${this.user._id}`)
     .subscribe(
       data => {
-        this.list = data.json().data;
+        this.list = data.json().data.like;
       }
     )
   }
