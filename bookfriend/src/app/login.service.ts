@@ -5,5 +5,6 @@ export class LoginService {
   public isShowTop = true;
   public isLogin = false;
   public username = "";
+  public user;
   constructor() {}
 }

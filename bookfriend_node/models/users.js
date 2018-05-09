@@ -45,7 +45,7 @@ module.exports = {
                 let likes = res.like;
                 let length = likes.length;
                 for (let i = 0; i < length; i++) {
-                    if (likes[i].id = id) {
+                    if (likes[i].id == id) {
                         likes.splice(i, 1);
                         i--;
                         length--;
@@ -55,6 +55,16 @@ module.exports = {
                     .update({ _id: Mongoose.Types.ObjectId(myid) }, { like: likes })
                     .exec();
             })
+    },
+    //更新基本信息
+    updateInfo: function updateInfo(id, info, avatar) {
+        return Users.findOne({ _id: id }, function (err, doc) {
+            doc.info = info;
+            if (avatar) {
+                doc.avatar = avatar;
+            }
+            doc.save();
+        })
     }
 
 

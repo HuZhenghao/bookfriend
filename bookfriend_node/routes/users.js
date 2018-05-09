@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const UsersModel = require('../models/users')
+const UsersModel = require('../models/users');
+const formidable = require('formidable');
+let path = require('path');
 
 
 /* GET users listing. */
@@ -121,5 +123,39 @@ router.get('/dislike', function (req, res, next) {
       })
     })
 })
-
+// router.post('/updateInfo', require('express-formidable')({
+//   uploadDir: path.join(__dirname, 'upload'), // 上传文件目录
+//   keepExtensions: true// 保留后缀
+// }), function (req, res, next) {
+//   const avatar = req.files.avatar;
+//   const info = req.fields.info;
+//   console.log(avatar);
+//   console.log(info)
+// })
+//更新头像以及简介
+router.post('/updateInfo', function (req, res, next) {
+  const form = formidable.IncomingForm();
+  console.log(__dirname);
+  form.uploadDir = 'public/img';//上传文件的保存路径
+  form.keepExtensions = true;//保存扩展名
+  form.parse(req, (err, fields, files) => {
+    if (err) {
+      throw err;
+    }
+    const id = fields.id;
+    const info = fields.info;
+    let avatar;
+    if (files.avatar) {
+      avatar = '/img/' + path.basename(files.avatar.path);
+    }
+    UsersModel.updateInfo(id, info, avatar)
+      .then(function (result) {
+        res.json({
+          data: result,
+          success: true,
+          message: "更新成功"
+        })
+      })
+  })
+})
 module.exports = router;

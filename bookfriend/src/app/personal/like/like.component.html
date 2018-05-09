@@ -1,5 +1,15 @@
 <div class="main-container" [@flyIn]="'active'">
   <div class="like-container">
-    <div *ngFor="let like of list;let i = index;" class="like-item"></div>
+    <div *ngFor="let like of list;let i = index;" class="like-item">
+      <img class="avatar" routerLink="/personal/{{like.id.username}}" src="http://localhost:3000{{like.id.avatar}}" alt="">
+      <div class="info-container">
+        <div routerLink="/personal/{{like.id.username}}" class="personal-name">
+          {{like.id.username}}
+          <span class="time">{{like.id.createdAt}}加入书友</span>
+        </div>
+        <div class="info">{{like.id.info}}</div>
+      </div>
+      <div class="like" (click)="dislike(i)">取消关注</div>
+    </div>
   </div>
 </div>

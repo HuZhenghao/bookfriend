@@ -42,8 +42,7 @@ export class PersonalComponent implements OnInit {
               localStorage.removeItem('nowPerson');
               localStorage.setItem('nowPerson', JSON.stringify(this.user));
               for (let i = 0; i < this.myself.like.length; i++) {
-                console.log(this.myself.like[i].id);
-                console.log(this.user._id);
+                console.log(this.myself.like)
                 if (this.myself.like[i].id) {
                   if (this.myself.like[i].id == this.user._id) {
                     this.isLike = true;
@@ -63,7 +62,7 @@ export class PersonalComponent implements OnInit {
     this.http.get(`http://localhost:3000/users/like?id=${this.user._id}&myid=${this.myself._id}`)
       .subscribe(
         data => {
-          this.myself.like.push(this.user._id);
+          this.myself.like.push({id: this.user._id});
           localStorage.setItem('user', JSON.stringify(this.myself));
           this.isLike = true;
         },

@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import { PersonalComponent } from './personal.component';
 import { personalRoutes } from './personal.routes';
@@ -16,6 +17,7 @@ import { SettingComponent } from './setting/setting.component';
   imports: [
     CommonModule,
     NgZorroAntdModule,
+    FileUploadModule,
     RouterModule.forChild(personalRoutes),
   ],
   declarations: [

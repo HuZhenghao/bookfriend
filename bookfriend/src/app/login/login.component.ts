@@ -45,6 +45,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.isLoadding = false;
             if (data.json().success) {
               localStorage.setItem("user",JSON.stringify(data.json().data));
+              this.loginService.user = data.json().data;
               this.route.navigateByUrl('');
               this.loginService.isLogin = true;
               this.loginService.username = JSON.parse(localStorage.getItem("user")).username;
@@ -66,6 +67,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             this.isLoadding = false;
             if (data.json().success) {
               localStorage.setItem("user",JSON.stringify(data.json().data));
+              this.loginService.user = data.json().data;
               this.route.navigateByUrl('');
               this.loginService.isLogin = true;
               this.loginService.username = JSON.parse(localStorage.getItem("user")).username;

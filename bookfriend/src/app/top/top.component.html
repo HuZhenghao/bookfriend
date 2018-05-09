@@ -1,7 +1,15 @@
 <div *ngIf="loginService.isShowTop" class="top-container">
   <div class="top">
     <img routerLink="" src="../../assets/logo.png" alt="">
-    <nz-input [nzType]="'search'" [nzPlaceHolder]="'搜索'" [(ngModel)]="searchContent" style="width: 200px;"></nz-input>
+    <div>
+      <nz-input-group [nzSize]="'large'" nzCompact>
+        <nz-select [ngModel]="'Sign Up'">
+          <nz-option [nzLabel]="'Sign Up'" [nzValue]="'Sign Up'"></nz-option>
+          <nz-option [nzLabel]="'Sign In'" [nzValue]="'Sign In'"></nz-option>
+        </nz-select>
+        <nz-input [nzType]="'search'" [nzPlaceHolder]="'搜索'" [(ngModel)]="searchContent" style="width: 200px;"></nz-input>
+      </nz-input-group>
+    </div>
     <div>
       <span class="top-button-box">
         <i class="anticon anticon-star-o" style="margin-right: 5px;"></i>关注
@@ -11,15 +19,15 @@
       </span>
     </div>
     <div>
-      <nz-popover *ngIf="loginService.isLogin" [nzTitle]="loginService.username || user.username">
-        <div routerLink="/personal/{{loginService.username || user.username}}" class="head-avatar" nz-popover>
-          <img src="http://localhost:3000{{user.avatar}}" alt="">
+      <nz-popover *ngIf="loginService.isLogin" [nzTitle]="loginService.username || loginService.user.username">
+        <div routerLink="/personal/{{loginService.username || loginService.user.username}}" class="head-avatar" nz-popover>
+          <img src="http://localhost:3000{{loginService.user.avatar}}" alt="">
         </div>
         <ng-template #nzTemplate>
           <div>
             <p class="avatar-item" routerLink="addpost">
               <i class="anticon anticon-file-text" style="margin-right: 15px;"></i>发表文章</p>
-            <p routerLink="/personal/{{loginService.username || user.username}}" class="avatar-item">
+            <p routerLink="/personal/{{loginService.username || loginService.user.username}}" class="avatar-item">
               <i class="anticon anticon-user" style="margin-right: 15px;"></i>个人主页</p>
             <p class="avatar-item">
               <i class="anticon anticon-setting" style="margin-right: 15px;"></i>设置</p>

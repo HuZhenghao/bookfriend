@@ -1,5 +1,29 @@
 <div class="main-container" [@flyIn]="'active'">
-  <p>
-    setting works!
-  </p>
+  <div class="setting-container">
+    <div class="left">
+      <div class="left-item {{chooseIndex == 0? 'cur' : ''}}">
+        <i class="anticon anticon-user" style="margin: 0 10px"></i>基本信息</div>
+      <div class="left-item {{chooseIndex == 1? 'cur' : ''}}">
+        <i class="anticon anticon-lock" style="margin: 0 10px"></i>修改密码</div>
+    </div>
+    <div *ngIf="chooseIndex == 0" class="right">
+      <div class="right-item">
+        <img class="avatar" src="{{avatar}}" alt="">
+        <a href="javascript:;" class="file">更换头像
+            <input (change)="upload($event)" type="file" name="" id="">
+        </a>
+      </div>
+      <div class="right-item">
+        <span class="label">简介：</span>
+        <input class="info-text" type="text" (change)="infoChange($event)" [value]="info">
+      </div>
+      <button (click)="save()" class="save-button" type="submit" nz-button [nzType]="'primary'">
+          <span>保存</span>
+        </button>
+    </div>
+    <div *ngIf="chooseIndex == 1" class="right">
+
+    </div>
+    
+  </div>
 </div>
