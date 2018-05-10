@@ -3,18 +3,18 @@
     <img routerLink="" src="../../assets/logo.png" alt="">
     <div>
       <nz-input-group [nzSize]="'large'" nzCompact>
-        <nz-select [ngModel]="'Sign Up'">
-          <nz-option [nzLabel]="'Sign Up'" [nzValue]="'Sign Up'"></nz-option>
-          <nz-option [nzLabel]="'Sign In'" [nzValue]="'Sign In'"></nz-option>
+        <nz-select [ngModel]="select">
+          <nz-option [nzLabel]="'文章'" [nzValue]="'文章'"></nz-option>
+          <nz-option [nzLabel]="'书籍'" [nzValue]="'书籍'"></nz-option>
         </nz-select>
-        <nz-input [nzType]="'search'" [nzPlaceHolder]="'搜索'" [(ngModel)]="searchContent" style="width: 200px;"></nz-input>
+        <nz-input [nzType]="'search'" [nzPlaceHolder]="'搜索'" [(ngModel)]="searchContent" (nzOnSearch)="onSearch($event)" style="width: 200px;"></nz-input>
       </nz-input-group>
     </div>
     <div>
-      <span class="top-button-box">
+      <span routerLink="/personal/{{loginService.username || loginService.user.username}}/like" class="top-button-box">
         <i class="anticon anticon-star-o" style="margin-right: 5px;"></i>关注
       </span>
-      <span class="top-button-box">
+      <span routerLink="/personal/{{loginService.username || loginService.user.username}}/message" class="top-button-box">
         <i class="anticon anticon-message" style="margin-right: 5px;"></i>消息
       </span>
     </div>

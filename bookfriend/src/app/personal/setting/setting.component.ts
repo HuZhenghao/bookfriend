@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FileUploader } from "ng2-file-upload";
 import { Http } from '@angular/http';
 import { flyIn } from '../../animation/fly-in';
 import { toBase64String } from '@angular/compiler/src/output/source_map';
-import { LoginService } from '../../login.service'
+import { LoginService } from '../../login.service';
+import { NzMessageService } from 'ng-zorro-antd';
+import { duration } from 'moment';
 
 @Component({
   selector: 'app-setting',
@@ -17,10 +18,13 @@ export class SettingComponent implements OnInit {
   avatar;
   avatarFile;
   info = "";
+  oldpsw = "";
+  newpsw = ""
 
   constructor(
     public http: Http,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private _message: NzMessageService
   ) { }
 
   ngOnInit() {
@@ -45,22 +49,44 @@ export class SettingComponent implements OnInit {
     let data = new FormData;
     data.append('avatar', this.avatarFile);
     data.append('info', this.info);
-    data.append('id',this.myself._id);
+    data.append('id', this.myself._id);
     this.http.post(`http://localhost:3000/users/updateInfo`, data)
-    .subscribe(
-      data => {
-        let user = data.json().data;
-        user.info = this.info;
-        this.myself = user;
-        localStorage.setItem('user',JSON.stringify(user));
-        this.loginService.user = user;
-      },
-      error => {
-        console.error(error);
-      }
-    )
+      .subscribe(
+        data => {
+          let user = data.json().data;
+          user.info = this.info;
+          this.myself = user;
+          localStorage.setItem('user', JSON.stringify(user));
+          this.loginService.user = user;
+        },
+        error => {
+          console.error(error);
+        }
+      )
   }
-  infoChange(e){
+  infoChange(e) {
     this.info = e.target.value;
+  }
+  choose(i) {
+    this.chooseIndex = i;
+  }
+  //修改密码
+  changePsw() {
+    if (this.oldpsw !== this.myself.password) {
+      this._message.create('error', '原密码不正确', { nzDuration: 2000 });
+      return false;
+    } else {
+      this.http.get(`http://localhost:3000/users/changePsw?id=${this.myself._id}&newpsw=${this.newpsw}`)
+        .subscribe(
+          data => {
+            this._message.create('success', '修改成功', { nzDuration: 2000 });
+            this.myself.password = this.newpsw;
+            localStorage.setItem('user', JSON.stringify(this.myself));
+          },
+          error => {
+            console.error(error)
+          }
+        )
+    }
   }
 }

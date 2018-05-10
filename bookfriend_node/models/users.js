@@ -65,6 +65,11 @@ module.exports = {
             }
             doc.save();
         })
+    },
+    //改密码
+    changePsw: function changePsw(id, newpsw) {
+        return Users.update({ _id: Mongoose.Types.ObjectId(id) }, { password: newpsw })
+            .exec();
     }
 
 

@@ -15,6 +15,7 @@ export class TopComponent implements OnInit {
   isLogin;
   username;
   user;
+  select = '文章';
   constructor(
     public loginService: LoginService,
     private http: Http,
@@ -31,9 +32,6 @@ export class TopComponent implements OnInit {
       this.loginService.isLogin = false;
     }
   }
-  onSearch(e){
-
-  }
   //去登录页面
   toLogin(){
     this.route.navigateByUrl('/login');
@@ -42,5 +40,9 @@ export class TopComponent implements OnInit {
   logout(){
     this.loginService.isLogin = false;
     localStorage.removeItem("user");
+  }
+  //搜索
+  onSearch(e){
+    console.log(this.select)
   }
 }

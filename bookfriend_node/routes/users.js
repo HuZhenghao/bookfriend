@@ -158,4 +158,22 @@ router.post('/updateInfo', function (req, res, next) {
       })
   })
 })
+//更改密码
+router.get('/changePsw', function (req, res, next) {
+  let id = req.query.id;
+  let newpsw = req.query.newpsw;
+  if(newpsw){
+    UsersModel.changePsw(id, newpsw)
+    .then((result) => {
+      res.json({
+        data: result,
+        success: true,
+        message: "修改成功"
+      })
+    })
+
+  }
+})
+
+
 module.exports = router;
