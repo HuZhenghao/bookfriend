@@ -1,0 +1,18 @@
+<div class="post-container">
+  <h1 class="title">{{post.title}}<span class="book-tag"><i class="anticon anticon-tag" style="margin-right: 5px"></i>  {{post.bookname}}</span></h1>
+  <div class="author">
+    <div class="avatar">
+      <img src="http://localhost:3000{{post.author.avatar}}" alt="">
+    </div>
+    <div class="info">
+      <div class="flex-item">
+        <div class="name">{{post.author.username}}</div>
+        <div class="info-text">{{post.author.info}}</div>
+      </div>
+      <div class="flex-item">
+        <span class="time">{{post.author.createdAt}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="post ql-editor-container" [innerHTML]="post.content"></div>
+</div>

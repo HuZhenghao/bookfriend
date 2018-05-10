@@ -6,5 +6,6 @@ export class LoginService {
   public isLogin = false;
   public username = "";
   public user;
+  public searchType = 'post';
   constructor() {}
 }

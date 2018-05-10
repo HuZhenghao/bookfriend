@@ -43,6 +43,12 @@ export class TopComponent implements OnInit {
   }
   //搜索
   onSearch(e){
-    console.log(this.select)
+    console.log(this.select);
+    if(this.select == '文章'){
+      this.loginService.searchType = 'post'
+    }else{
+      this.loginService.searchType = 'book'
+    }
+    this.route.navigateByUrl('/home/' + this.searchContent);
   }
 }

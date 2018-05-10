@@ -14,6 +14,7 @@ import { TopComponent } from './top/top.component';
 import { LoginComponent } from './login/login.component';
 import { LoginService } from './login.service';
 import { AddpostComponent } from './addpost/addpost.component';
+import { PostComponent } from './post/post.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AddpostComponent } from './addpost/addpost.component';
     HomeComponent,
     TopComponent,
     LoginComponent,
-    AddpostComponent
+    AddpostComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

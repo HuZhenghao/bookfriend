@@ -2,7 +2,7 @@
   <div class="post-item" *ngFor="let post of posts; let i = index" nz-row>
     <div class="avatar-container" nz-col [nzSpan]="4">
 
-      <nz-card style="width:100px;cursor: pointer;" routerLink="personal/{{post.author.username}}">
+      <nz-card style="width:100px;cursor: pointer;" routerLink="/personal/{{post.author.username}}">
         <ng-template #body>
           <div class="custom-image">
             <img class="avatar" src="http://localhost:3000{{post.author.avatar}}" alt="">
@@ -16,10 +16,11 @@
     </div>
     <div class="content-box" nz-col [nzSpan]="20">
       <div class="content-container">
-        <div class="content-title ql-align-center">{{post.title}}</div>
+        <div routerLink="/post/{{post._id}}" class="content-title ql-align-center">{{post.title}} <span class="book-tag"><i class="anticon anticon-tag" style="margin-right: 5px"></i>  {{post.bookname}}</span></div>
         <div class="content ql-editor-container" [innerHTML]="post.content"></div>
         <div class="content-bottom">
-          浏览({{post.pv}})
+          <span class="time">{{post.createdAt}}</span>
+          <span><i class="anticon anticon-eye-o" style="margin-right: 5px"></i>浏览({{post.pv}})</span>
         </div>
       </div>
     </div>
