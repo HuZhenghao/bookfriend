@@ -1,5 +1,8 @@
 <div class="post-container">
-  <h1 class="title">{{post.title}}<span class="book-tag"><i class="anticon anticon-tag" style="margin-right: 5px"></i>  {{post.bookname}}</span></h1>
+  <h1 class="title">{{post.title}}
+    <span class="book-tag">
+      <i class="anticon anticon-tag" style="margin-right: 5px"></i> {{post.bookname}}</span>
+  </h1>
   <div class="author">
     <div class="avatar">
       <img src="http://localhost:3000{{post.author.avatar}}" alt="">
@@ -15,4 +18,13 @@
     </div>
   </div>
   <div class="post ql-editor-container" [innerHTML]="post.content"></div>
+  <div class="content-bottom">
+    <span>
+      <i class="anticon anticon-eye-o" style="margin-right: 5px"></i>浏览({{post.pv}})</span>
+  </div>
+</div>
+<div class="comments-container">
+  <div class="add-comments">
+    <img src="" alt="">
+  </div>
 </div>

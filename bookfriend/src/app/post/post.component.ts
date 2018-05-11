@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from "@angular/http";
 import { ActivatedRoute } from "@angular/router";
+import {  } from '../login.service'
 
 @Component({
   selector: 'app-post',

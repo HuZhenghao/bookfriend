@@ -3,7 +3,7 @@
     width: 1200px;
     margin: 0 auto;
     margin-top: 50px;
-    padding: 30px;
+    padding: 30px 30px 0 30px;
     background-color: #fff;
     border-radius: 15px;
 }
@@ -26,6 +26,7 @@
     width: 64px;
     height: 64px;
     display: inline-block;
+    margin-left: 20px;
 }
 .avatar img{
     width: 100%;
@@ -55,4 +56,19 @@
     display: flex;
     height: 30px;
     align-items: center;
+}
+.content-bottom{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+.comments-container{
+    box-sizing: border-box;
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 30px 30px 0 30px;
+    background-color: #fff;
+    border-radius: 15px;
 }

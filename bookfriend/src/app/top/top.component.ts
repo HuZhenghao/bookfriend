@@ -26,29 +26,33 @@ export class TopComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("user"));
     console.log(this.user)
     this.loginService.user = this.user;
-    if(this.loginService.user){
+    if (this.loginService.user) {
       this.loginService.isLogin = true;
-    }else{
+    } else {
       this.loginService.isLogin = false;
     }
   }
   //去登录页面
-  toLogin(){
+  toLogin() {
     this.route.navigateByUrl('/login');
   }
   //退出登录
-  logout(){
+  logout() {
     this.loginService.isLogin = false;
     localStorage.removeItem("user");
   }
   //搜索
-  onSearch(e){
+  onSearch(e) {
     console.log(this.select);
-    if(this.select == '文章'){
+    if (this.select == '文章') {
       this.loginService.searchType = 'post'
-    }else{
+    } else {
       this.loginService.searchType = 'book'
     }
+    if (!this.searchContent) { this.searchContent = 'all' }
     this.route.navigateByUrl('/home/' + this.searchContent);
+    if (this.searchContent == 'all') {
+      this.searchContent = '';
+    }
   }
 }
