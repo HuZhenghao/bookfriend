@@ -15,5 +15,26 @@ module.exports = {
     getPeople: function getPeople(id) {
         return Post.find({ author: Mongoose.Types.ObjectId(id) })
             .populate('author')
+    },
+    //搜索
+    searchPosts: function searchPosts(type, content) {
+        if (type == "post") {
+            return Post.find({ title: new RegExp(content) })
+                .populate('author')
+        } else if (type == 'book') {
+            return Post.find({ bookname: new RegExp(content) })
+                .populate('author')
+        }
+    },
+    //根据文章id获取文章内容
+    getPost: function getPost(id) {
+        return Post.find({ _id: Mongoose.Types.ObjectId(id) })
+            .populate('author')
+    },
+    //pv+1
+    pvinc: function pvinc(id) {
+        return Post
+            .update({ _id: id }, { $inc: { pv: 1 } })
+            .exec()
     }
 }
