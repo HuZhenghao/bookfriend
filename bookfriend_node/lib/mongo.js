@@ -13,11 +13,11 @@ let usersSchema = new Schema({
     username: { type: String, index: true, unique: true },
     password: { type: String },
     nickname: { type: String },
-    info: { type: String, default: '这家伙很懒，还没有个人介绍！'},
+    info: { type: String, default: '这家伙很懒，还没有个人介绍！' },
     gender: { type: String },
     avatar: { type: String, default: '/img/defaultAvatar.png' },
-    like: [{ id: {type: Mongoose.Schema.Types.ObjectId, ref: 'user'} }],
-    message: [{ id: {type: Mongoose.Schema.Types.ObjectId, ref: 'post'}}]
+    like: [{ id: { type: Mongoose.Schema.Types.ObjectId, ref: 'user' } }],
+    message: [{ id: { type: Mongoose.Schema.Types.ObjectId, ref: 'post' }, name: { type: String }, content: {type: String} }]
 }, { timestamps: true })
 exports.Users = Mongoose.model('user', usersSchema);
 
@@ -37,14 +37,15 @@ let postSchema = new Schema({
 exports.Post = Mongoose.model('post', postSchema);
 
 let commentsSchema = new Schema({
-    authorname: { type: String },
+    author: { type: Mongoose.Schema.Types.ObjectId, ref: 'user' },
     content: { type: String },
+    reply: [],
     postId: { type: Mongoose.Schema.Types.ObjectId }
 }, { timestamps: true })
 exports.Comments = Mongoose.model('comments', commentsSchema);
 
 let replySchema = new Schema({
-    authorname: { type: String },
+    author: { type: Mongoose.Schema.Types.ObjectId, ref: 'user' },
     content: { type: String },
     commentsId: { type: Mongoose.Schema.Types.ObjectId }
 }, { timestamps: true })

@@ -53,8 +53,6 @@ router.post('/signin', function (req, res, next) {
   }
   UsersModel.getUserByName(reqUser.username)
     .then(function (user) {
-      console.log(user);
-      console.log(reqUser.password);
       if (!user) {
         res.json({
           data: [],
@@ -162,17 +160,38 @@ router.post('/updateInfo', function (req, res, next) {
 router.get('/changePsw', function (req, res, next) {
   let id = req.query.id;
   let newpsw = req.query.newpsw;
-  if(newpsw){
+  if (newpsw) {
     UsersModel.changePsw(id, newpsw)
+      .then((result) => {
+        res.json({
+          data: result,
+          success: true,
+          message: "修改成功"
+        })
+      })
+
+  }
+})
+//获取消息
+router.get('/getMessage', function (req, res, next) {
+  UsersModel.getMessage(req.query.id)
     .then((result) => {
       res.json({
         data: result,
         success: true,
-        message: "修改成功"
+        message: "获取成功"
       })
     })
-
-  }
+})
+router.get('/deleteMessage', function (req, res, next) {
+  UsersModel.deleteMessage(req.query.id, req.query.postId)
+    .then((result) => {
+      res.json({
+        data: result,
+        success: true,
+        message: "删除成功"
+      })
+    })
 })
 
 

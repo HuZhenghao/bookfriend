@@ -14,12 +14,68 @@ module.exports = {
             .exec()
     },
     //给用户添加一条消息
-    addMessage: function addMessage(name, postId) {
-        let message = Users.findOne({ username: name }).message;
-        message.push(postId);
-        return Users
-            .updateOne({ username: name }, { message: message })
-            .exec();
+    addMessage: function addMessage(id, postId, name, content) {
+        let message = Users.findOne({ _id: id })
+            .then((res) => {
+                let message = res.message;
+                // let repeat = false;
+                // for (let i = 0; i < message.length; i++) {
+                //     if (message[i].id == postId) {
+                //         repeat = true;
+                //     }
+                // }
+                // if (!repeat) {
+                    console.log(name);
+                    console.log(content);
+                message.push({ id: postId, name: name, content: content });
+                // }
+                return Users
+                    .updateOne({ _id: id }, { message: message })
+                    .exec();
+            })
+    },
+    //添加消息
+    addMessageByName: function addMessageByName(name, postId, name, content) {
+        let message = Users.findOne({ username: name })
+            .then((res) => {
+                let message = res.message;
+                // let repeat = false;
+                // for (let i = 0; i < message.length; i++) {
+                //     if (message[i].id == postId) {
+                //         repeat = true;
+                //     }
+                // }
+                // if (!repeat) {
+                    console.log(name, content)
+                message.push({ id: postId, name: name, content: content });
+                // }
+                return Users
+                    .updateOne({ username: name }, { message: message })
+                    .exec();
+            })
+    },
+    //获取消息
+    getMessage: function getMessage(id) {
+        return Users.findOne({ _id: id })
+            .populate('message.id')
+            .sort({ createdAt: -1 })
+    },
+    //删除消息
+    deleteMessage: function deleteMessage(id, postId) {
+        return Users.findOne({ _id: id })
+            .then((res) => {
+                let message = res.message;
+                let length = message.length
+                for (let i = 0; i < length; i++) {
+                    if (message[i].id == postId) {
+                        message.splice(i, 1);
+                        i--;
+                        length--;
+                    }
+                }
+                return Users
+                    .updateOne({ _id: id }, { message: message })
+            })
     },
     //查询关注
     getLike: function getLike(id) {

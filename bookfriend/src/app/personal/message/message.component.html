@@ -1,5 +1,7 @@
 <div class="main-container" [@flyIn]="'active'">
-  <p>
-    message works!
-  </p>
+  <div class="message-title">共{{message.length}}条消息</div>
+  <div routerLink="/post/{{item.id._id}}" class="message-item" *ngFor="let item of message;let i = index" (click)="topost(i)">
+    <span class="message-name">{{item.name}}</span>回复了你：
+    <span>{{item.content}}</span>
+  </div>
 </div>

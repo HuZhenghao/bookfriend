@@ -2,14 +2,18 @@
   <h1 class="title">{{post.title}}
     <span class="book-tag">
       <i class="anticon anticon-tag" style="margin-right: 5px"></i> {{post.bookname}}</span>
+    <button (click)="deletePost()" *ngIf="post.author.username == loginService.user.username" class="delete" nz-button [nzType]="'danger'"
+      [nzSize]="'large'">
+      <span>删除</span>
+    </button>
   </h1>
   <div class="author">
-    <div class="avatar">
+    <div class="avatar" style="cursor: pointer;" routerLink="/personal/{{post.author.username}}">
       <img src="http://localhost:3000{{post.author.avatar}}" alt="">
     </div>
     <div class="info">
-      <div class="flex-item">
-        <div class="name">{{post.author.username}}</div>
+      <div class="flex-item" style="cursor: pointer;">
+        <div routerLink="/personal/{{post.author.username}}" class="name">{{post.author.username}}</div>
         <div class="info-text">{{post.author.info}}</div>
       </div>
       <div class="flex-item">
@@ -25,6 +29,57 @@
 </div>
 <div class="comments-container">
   <div class="add-comments">
-    <img src="" alt="">
+    <img class="avatar-comments" src="http://localhost:3000{{loginService.user.avatar}}" alt="">
+    <textarea class="textarea" placeholder="写下你的评论" [(ngModel)]="content" name="" id="" cols="30" rows="10"></textarea>
+    <button (click)="send()" class="send-button" nz-button [nzSize]="'large'" [nzType]="'primary'">
+      <span>发送</span>
+    </button>
+  </div>
+  <div class="comments">
+    <div class="comments-title">共{{comments.length}}条评论</div>
+    <div class="comments-item" *ngFor="let comment of comments;let i = index;">
+      <div class="comments-info">
+        <img routerLink="/personal/{{comment.author.username}}" class="avatar-comments" style="cursor: pointer;" src="http://localhost:3000{{comment.author.avatar}}"
+          alt="">
+        <div class="info">
+          <div routerLink="/personal/{{comment.author.username}}" class="info-name" style="cursor: pointer;">{{comment.author.username}}</div>
+          <div class="info-time">{{i + 1}}楼 - {{comment.createdAt}}</div>
+        </div>
+      </div>
+      <div class="comments-content">{{comment.content}}</div>
+      <div style="padding-left: 30px;padding-bottom: 20px;">
+        <span class="comments-bottom" (click)="replyToComment(i)">
+          <i class="anticon anticon-message"></i> 回复</span>
+        <span *ngIf="comment.author.username == loginService.user.username" class="comments-bottom" (click)="deleteComments(i)">
+          <i class="anticon anticon-close-circle-o"></i> 删除</span>
+      </div>
+      <div *ngIf="comment.reply.length !== 0" class="reply-container">
+        <div class="reply-item" *ngFor="let item of comment.reply; let j = index">
+          <div class="reply-content" style="font-size: 14px;color:#333">
+            <div routerLink="/personal/{{item.username}}" class="reply-item-name" style="cursor: pointer;color: #3194d0;">{{item.username}}：</div>
+            <div class="reply-item-name" style="word-break: break-all">
+              <span routerLink="/personal/{{item.oldUsername}}" style="cursor: pointer;color: #3194d0;">@{{item.oldUsername}}</span> {{item.content}}</div>
+          </div>
+          <div style="font-size: 12px;color: #969696;">
+            <span style="margin-right: 20px">{{item.time}}</span>
+            <span class="comments-bottom" (click)="replyToReply(i,j)">
+              <i class="anticon anticon-message"></i> 回复</span>
+            <span *ngIf="item.username == loginService.user.username" class="comments-bottom" (click)="deleteReply(i, j)">
+              <i class="anticon anticon-close-circle-o"></i> 删除</span>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="comment.isEdit">
+        <textarea class="textarea" [(ngModel)]="comment.replyContent" style="width:1100px" name="" id="" cols="30" rows="10"></textarea>
+        <button (click)="cancelEdit(i)" class="send-button" style="margin-left: 900px;margin-bottom:30px" nz-button [nzSize]="'large'"
+          [nzType]="'primary'">
+          <span>取消</span>
+        </button>
+        <button (click)="sendToComment(i)" class="send-button" style="margin-left: 36px;margin-bottom:30px" nz-button [nzSize]="'large'"
+          [nzType]="'primary'">
+          <span>发送</span>
+        </button>
+      </div>
+    </div>
   </div>
 </div>

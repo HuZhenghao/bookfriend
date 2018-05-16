@@ -10,6 +10,7 @@ module.exports = {
     getAll: function getAll() {
         return Post.find({})
             .populate('author')
+            .sort({ createdAt: 1 })
     },
     //根据id获取某用户文章
     getPeople: function getPeople(id) {
@@ -21,9 +22,11 @@ module.exports = {
         if (type == "post") {
             return Post.find({ title: new RegExp(content) })
                 .populate('author')
+                .sort({ createdAt: -1 })
         } else if (type == 'book') {
             return Post.find({ bookname: new RegExp(content) })
                 .populate('author')
+                .sort({ createdAt: -1 })
         }
     },
     //根据文章id获取文章内容
@@ -36,5 +39,9 @@ module.exports = {
         return Post
             .update({ _id: id }, { $inc: { pv: 1 } })
             .exec()
+    },
+    //删除文章
+    deletePost: function deletePost(id) {
+        return Post.remove({ _id: id })
     }
 }
