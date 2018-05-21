@@ -14,8 +14,9 @@
       <span routerLink="/personal/{{loginService.username || loginService.user.username}}/like" class="top-button-box">
         <i class="anticon anticon-star-o" style="margin-right: 5px;"></i>关注
       </span>
-      <span routerLink="/personal/{{loginService.username || loginService.user.username}}/message" class="top-button-box">
+      <span routerLink="/personal/{{loginService.username || loginService.user.username}}/message" class="top-button-box" style="position: relative;">
         <i class="anticon anticon-message" style="margin-right: 5px;"></i>消息
+        <div *ngIf="loginService.user.message.length !== 0" class="message-num">{{loginService.user.message.length}}</div>
       </span>
     </div>
     <div>
