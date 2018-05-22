@@ -13,6 +13,7 @@ import { LoginService } from '../login.service';
 export class HomeComponent implements OnInit {
   posts = [];
   content;
+  bannerIndex = 0;
   constructor(
     public http: Http,
     public loginService: LoginService,
@@ -41,6 +42,9 @@ export class HomeComponent implements OnInit {
           )
       }
     )
+  }
+  changeBanner(e){
+    this.bannerIndex = e;
   }
 
 }

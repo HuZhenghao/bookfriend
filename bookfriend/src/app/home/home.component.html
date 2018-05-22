@@ -1,4 +1,225 @@
 <div class="home-container" [@flyIn]="'active'">
+  <nz-carousel [nzEffect]="'fade'" class="banner-container" (nzAfterChange)="changeBanner($event)">
+    <div nz-carousel-content>
+      <div *ngIf="bannerIndex == 0" class="banner-left">
+        <img class="book-img-big" src="../../assets/1book1.jpg" alt="">
+        <div style="width: 300px;padding-left: 20px;">
+          <h1 class="big-title">
+            <div>2017年度</div>
+            <div>外国文学（小说类）</div>
+          </h1>
+          <div>
+            <div>
+              <h2>
+                <span class="bli1r">Top 1</span>
+                <a class="book-a" href="https://book.douban.com/subject/26630480/" target="_blank">毒木圣经</a>
+              </h2>
+              <div style="color: #fff;font-size: 14px;">[美] 芭芭拉·金索沃</div>
+              <div style="color: #fff;font-size: 14px;">
+                <span>8.7</span>
+                <span>
+                  1617 人评价
+                </span>
+              </div>
+              <div class="book-info">
+                沉重而惊艳的作品。世上没有正义可言，所有对岸的生命，本都可以自在地生活。干预和教化或许不仅是徒劳，甚至也是罪孽。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="bannerIndex == 0" class="banner-right">
+        <a class="right-item" href="https://book.douban.com/subject/27104959/" target="_blank">
+          <img class="right-item-pic" src="../../assets/1book2.jpg" alt="">
+          <div class="right-item-index">2</div>
+          <div class="right-item-name">离开的，留下的
+            <span class="right-item-grade">8.9</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27124847/" target="_blank">
+          <img class="right-item-pic" src="../../assets/1book3.jpg" alt="">
+          <div class="right-item-index">3</div>
+          <div class="right-item-name">葡萄牙的高山
+            <span class="right-item-grade">8.6</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27042344/" target="_blank">
+          <img class="right-item-pic" src="../../assets/1book4.jpg" alt="">
+          <div class="right-item-index">4</div>
+          <div class="right-item-name">醒来的女性
+            <span class="right-item-grade">8.7</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27079479/" target="_blank">
+          <img class="right-item-pic" src="../../assets/1book5.jpg" alt="">
+          <div class="right-item-index">5</div>
+          <div class="right-item-name">南方高速
+            <span class="right-item-grade">8.9</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27006491/" target="_blank">
+          <img class="right-item-pic" src="../../assets/1book6.jpg" alt="">
+          <div class="right-item-index">6</div>
+          <div class="right-item-name">带上手套擦眼泪
+            <span class="right-item-grade">8.7</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27068817/" target="_blank">
+          <img class="right-item-pic" src="../../assets/1book7.jpg" alt="">
+          <div class="right-item-index">7</div>
+          <div class="right-item-name">欢迎来到猴子馆
+            <span class="right-item-grade">8.8</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div nz-carousel-content>
+      <div *ngIf="bannerIndex == 1" class="banner-left" style="background-color: rgba(11, 27, 68, 0.8);">
+        <img class="book-img-big" src="../../assets/1book1.jpg" alt="">
+        <div style="width: 300px;padding-left: 20px;">
+          <h1 class="big-title">
+            <div>2017年度</div>
+            <div>中国文学（小说类）</div>
+          </h1>
+          <div>
+            <div>
+              <h2>
+                <span class="bli1r">Top 1</span>
+                <a class="book-a" href="https://book.douban.com/subject/27104286/" target="_blank">寂寞的游戏</a>
+              </h2>
+              <div style="color: #fff;font-size: 14px;">袁哲生</div>
+              <div style="color: #fff;font-size: 14px;">
+                <span>8.5</span>
+                <span>
+                  987 人评价
+                </span>
+              </div>
+              <div class="book-info">
+                每每回忆起童年的时候，几乎同样是这样寂寞的情绪。死亡的阴影无处不在，人在抵达世界之后对自我的整合在童年就初露端倪，自我模糊的面孔只有在许多寂寞的时间里才得以显现。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="bannerIndex == 1" class="banner-right">
+        <a class="right-item" href="https://book.douban.com/subject/27010212/" target="_blank">
+          <img class="right-item-pic" src="../../assets/2book2.jpg" alt="">
+          <div class="right-item-index">2</div>
+          <div class="right-item-name">芳华
+            <span class="right-item-grade">8.1</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27107671/" target="_blank">
+          <img class="right-item-pic" src="../../assets/2book3.jpg" alt="">
+          <div class="right-item-index">3</div>
+          <div class="right-item-name">马甲
+            <span class="right-item-grade">7.7</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27116235/" target="_blank">
+          <img class="right-item-pic" src="../../assets/1book4.jpg" alt="">
+          <div class="right-item-index">4</div>
+          <div class="right-item-name">飞行家
+            <span class="right-item-grade">8.2</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27176647/" target="_blank">
+          <img class="right-item-pic" src="../../assets/2book5.jpg" alt="">
+          <div class="right-item-index">5</div>
+          <div class="right-item-name">吃瓜时代的儿女
+            <span class="right-item-grade">8.1</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27102655/" target="_blank">
+          <img class="right-item-pic" src="../../assets/2book6.jpg" alt="">
+          <div class="right-item-index">6</div>
+          <div class="right-item-name">柒
+            <span class="right-item-grade">8.0</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27064644/" target="_blank">
+          <img class="right-item-pic" src="../../assets/2book7.jpg" alt="">
+          <div class="right-item-index">7</div>
+          <div class="right-item-name">北方大道
+            <span class="right-item-grade">7.8</span>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div nz-carousel-content>
+      <div *ngIf="bannerIndex == 2" class="banner-left" style="background-color: rgba(11, 27, 68, 0.8);">
+        <img class="book-img-big" src="../../assets/3book1.jpg" alt="">
+        <div style="width: 300px;padding-left: 20px;">
+          <h1 class="big-title">
+            <div>2017年度</div>
+            <div>历史·文化</div>
+          </h1>
+          <div>
+            <div>
+              <h2>
+                <span class="bli1r">Top 1</span>
+                <a class="book-a" href="https://book.douban.com/subject/27000152/" target="_blank">海洋与文明</a>
+              </h2>
+              <div style="color: #fff;font-size: 14px;">[美] 林肯·佩恩</div>
+              <div style="color: #fff;font-size: 14px;">
+                <span>8.7</span>
+                <span>
+                  429 人评价
+                </span>
+              </div>
+              <div class="book-info">
+                相比围绕着权力斗争的陆地史，海洋史还多了一份人类的勇气和探索精神。这段历史值得铭记，哪怕如今多数人类对海洋的热情已经荡然无存，因为它对商业，对文化，对科学的贡献难以估量。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="bannerIndex == 2" class="banner-right">
+        <a class="right-item" href="https://book.douban.com/subject/27085641/" target="_blank">
+          <img class="right-item-pic" src="../../assets/3book2.jpg" alt="">
+          <div class="right-item-index">2</div>
+          <div class="right-item-name">邻人
+            <span class="right-item-grade">8.6</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/26992884/" target="_blank">
+          <img class="right-item-pic" src="../../assets/3book3.jpg" alt="">
+          <div class="right-item-index">3</div>
+          <div class="right-item-name">冰雪王国
+            <span class="right-item-grade">9.5</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/26303508/" target="_blank">
+          <img class="right-item-pic" src="../../assets/3book4.jpg" alt="">
+          <div class="right-item-index">4</div>
+          <div class="right-item-name">现代主义
+            <span class="right-item-grade">8.7</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27021578/" target="_blank">
+          <img class="right-item-pic" src="../../assets/2book5.jpg" alt="">
+          <div class="right-item-index">5</div>
+          <div class="right-item-name">大国的崩溃
+            <span class="right-item-grade">8.3</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/27007549/" target="_blank">
+          <img class="right-item-pic" src="../../assets/2book6.jpg" alt="">
+          <div class="right-item-index">6</div>
+          <div class="right-item-name">中央帝国的财政密码
+            <span class="right-item-grade">8.5</span>
+          </div>
+        </a>
+        <a class="right-item" href="https://book.douban.com/subject/26897187/" target="_blank">
+          <img class="right-item-pic" src="../../assets/2book7.jpg" alt="">
+          <div class="right-item-index">7</div>
+          <div class="right-item-name">活着回来的男人
+            <span class="right-item-grade">8.4</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </nz-carousel>
   <div class="post-item" *ngFor="let post of posts; let i = index" nz-row>
     <div class="avatar-container" nz-col [nzSpan]="4">
 
@@ -16,11 +237,15 @@
     </div>
     <div class="content-box" nz-col [nzSpan]="20">
       <div class="content-container">
-        <div routerLink="/post/{{post._id}}" class="content-title ql-align-center">{{post.title}} <span class="book-tag"><i class="anticon anticon-tag" style="margin-right: 5px"></i>  {{post.bookname}}</span></div>
+        <div routerLink="/post/{{post._id}}" class="content-title ql-align-center">{{post.title}}
+          <span class="book-tag">
+            <i class="anticon anticon-tag" style="margin-right: 5px"></i> {{post.bookname}}</span>
+        </div>
         <div class="content ql-editor-container" [innerHTML]="post.content"></div>
         <div class="content-bottom">
           <span class="time">{{post.createdAt}}</span>
-          <span><i class="anticon anticon-eye-o" style="margin-right: 5px"></i>浏览({{post.pv}})</span>
+          <span>
+            <i class="anticon anticon-eye-o" style="margin-right: 5px"></i>浏览({{post.pv}})</span>
         </div>
       </div>
     </div>

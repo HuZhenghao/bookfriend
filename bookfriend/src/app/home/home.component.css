@@ -1,8 +1,128 @@
+
+a {
+    color: #fff;
+    background: transparent;
+    text-decoration: none;
+    outline: none;
+    cursor: pointer;
+}
 .home-container{
     width: 1200px;
     margin: 0 auto;
     padding: 30px 0;
 }
+.banner-container{
+    width: 1200px;
+    height: 440px;
+}
+[nz-carousel-content]{
+    display: flex !important;
+    flex-flow: row wrap !important;
+    width: 1200px;
+    height: 400px;
+    padding-bottom: 40px;
+    background-size: contain;
+}
+.banner-left{
+    display: flex;
+    width: 480px;
+    height: 280px;
+    padding: 20px;
+    margin: 50px 50px 0 50px;
+    background-color: rgba(158, 89, 20, 0.8);
+    border-radius: 7px;
+}
+.book-img-big{
+    display: block;
+    width: 156px;
+    height: 224px;
+    background-size: 100% 100%;
+}
+.bli1r{
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    background: #e58b00;
+    background-color: rgb(229, 139, 0);
+    border-radius: 1.5rem;
+    padding: 0 .5rem;
+    margin-bottom: .3rem;
+    margin-right: .5rem;
+    vertical-align: middle;
+    color: #fff;
+}
+.big-title{
+    padding-bottom: .4em;
+    border-bottom: 1px solid #fff;
+    margin-bottom: .4em;
+    font-size: 22px;
+    color: #fff;
+}
+.book-a{
+    font-size: 22px;
+}
+.book-info{
+    color: hsla(0,0%,100%,.6);
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.7;
+}
+.banner-right{
+    display: flex;
+    flex-flow: row wrap;
+    width: 500px;
+    height: 380px;
+}
+.right-item{
+    display: inline-block;
+    position: relative;
+    width: 142px;
+    height: 120px;
+    margin: 64px 5px 0px;
+    background: rgba(0,0,0,.5);
+    border-radius: 7px;
+}
+.right-item-pic{
+    position: absolute;
+    bottom: 46px;
+    left: 15px;
+    width: 86px;
+    height: 122px;
+}
+.right-item-index{
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    left: auto;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+}
+.right-item-name{
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    width: 86px;
+    height: 42px;
+    padding: 0;
+    min-height: 40px;
+    line-height: 18px;
+    white-space: pre-wrap;
+    font-size: 12px;
+    color: #fff;
+}
+.right-item-grade{
+    color: #f6a623;
+    line-height: 18px;
+    white-space: pre-wrap;
+}
+
+
+
 .avatar-container{
     display: flex;
     justify-content: center;
